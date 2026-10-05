@@ -1,0 +1,630 @@
+/*
+ * Name: Alex K & Saleh K.
+ * Date: Thursday, December 11, 2025
+ * Section: CSE 154
+ *
+ * Description: Shared stylesheet for the U-SWAP front end layout,
+ * including login, profile, search, cart, and messaging views.
+ */
+
+html {
+  scroll-behavior: smooth;
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(205, 215, 241, 1) 14%,
+      rgba(240, 242, 245, 1) 51%,
+      rgba(255, 255, 255, 1) 100%
+    );
+  color: #333;
+  font-size: 2rem;
+  min-height: 100vh;
+  min-width: 100vh;
+  margin: 70px 0 50px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+div h3 {
+  text-align: center;
+  margin: 0;
+}
+
+header h1 {
+  color: #5f7fff; /* muted blue accent */
+  font-size: 4rem;
+  text-align: center;
+}
+
+main {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+#login-or-signup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40%;
+  gap: 2rem;
+  padding: 0 1rem;
+}
+
+main > section, #message-content {
+  background-color: #ffffff;
+  border: 1px solid #cdd7f1; /* light blue-gray border */
+  border-radius: 10px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s ease;
+}
+
+main > section:hover, .card-container:hover, #message-content:hover, .cart-container:hover {
+  border-color: #5f7fff;
+  box-shadow: 0 0 20px rgba(95, 127, 255, 0.2);
+}
+
+section h2 {
+  color: #5f7fff;
+  font-size: 3rem;
+  text-align: center;
+  margin: 2rem 0 0 0;
+}
+
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+form div {
+  display: flex;
+  flex-direction: column;
+  padding: 0 2rem;
+  gap: 0.5rem;
+}
+
+form input[type="checkbox"], #change-view-mode {
+  width: 20px;
+  height: 20px;
+  margin: 0;
+}
+
+#profile-view label {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+form button {
+  margin: 0 2rem;
+}
+
+#login-or-signup label {
+  font-size: 2rem;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+#login-or-signup input {
+  padding: 1.2rem 1.4rem;
+  font-size: 1.6rem;
+  border: 1px solid #cdd7f1;
+  border-radius: 8px;
+  background: #f0f2f5;
+  outline: none;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+#login-or-signup input:focus {
+  border-color: #5f7fff;
+  box-shadow: 0 0 20px rgba(95, 127, 255, 0.2);
+}
+
+#login-or-signup button,
+#adding-to-cart button,
+#cart-view button,
+#finalize-swap-btn,
+.cart-remove-btn {
+  padding: 1.2rem;
+  background: #5f7fff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+#login-or-signup button:hover,
+#search-btn:hover,
+#adding-to-cart button:hover,
+#cart-view button:hover,
+#finalize-swap-btn:hover {
+  background: #3c53d8;
+  transform: translateY(-1px);
+}
+
+/* https://uiverse.io/kamehame-ha/lovely-fly-87 */
+form label.text {
+  font-size: 1rem;
+  color: #5f7fff;
+  font-weight: 600;
+  top: 0.5rem;
+  margin: 0 0 0 7px;
+  padding: 0 3px;
+  background: #e8e8e8;
+  width: fit-content;
+}
+
+header {
+  width: 80%;
+}
+
+/* https://www.w3schools.com/howto/howto_css_fixed_menu.asp */
+header nav {
+  width: 100%;
+  height: 80px;
+  margin: 0 auto;
+  background: white;
+  border: 1px solid #cdd7f1;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+#nav-left {
+  font-size: 2rem;
+  color: #5f7fff;
+  font-weight: 600;
+  padding-left: 2rem;
+}
+
+/* RIGHT SIDE - ICONS */
+#nav-right {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding-right: 2rem;
+}
+
+/* ICONS */
+.nav-icon {
+  height: 32px;
+  width: 32px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.nav-icon:hover {
+  transform: translateY(-2px);
+}
+
+.link {
+  color: #5f7fff;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.link:hover {
+  color: #3c53d8;
+}
+
+#profile-view {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
+
+.expanded {
+  height: 1200px;
+  width: 100%;
+}
+
+.shrunk {
+  height: fit-content;
+  width: 50%;
+  padding-bottom: 2rem;
+}
+
+/* Profile Card Section */
+.card-container, .cart-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  background: #ffffff;
+  border: 1px solid #cdd7f1;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cart-container {
+  max-width: 25%;
+  width: fit-content;
+}
+
+.card-container:hover {
+  min-width: 30%;
+}
+
+.card-container-expanded {
+  width: min-content;
+  min-width: 30%;
+  max-width: 40%;
+}
+
+.card-container-fixed {
+  width: 80%;
+}
+
+.full-class-card {
+  width: 100%;
+  background: #ffffff;
+  border-radius: 10px;
+  border: 1px solid #cdd7f1;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+  padding: 0;
+  cursor: pointer;
+  max-height: 3.4rem;
+  transition: max-height 0.25s ease, box-shadow 0.25s ease;
+}
+
+.full-class-card:hover {
+  max-height: fit-content;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+}
+
+.full-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  padding: 0 1.2rem;
+  flex-wrap: nowrap;
+  max-width: 100%;
+}
+
+.full-course-id {
+  font-weight: 700;
+  color: #5f7fff;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.full-course-title {
+  color: #333;
+  flex: 1 1 auto;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.full-course-credits {
+  color: #333;
+  font-weight: 500;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.full-class-card > p {
+  margin-top: 0.6rem;
+  margin-bottom: 0;
+  padding: 0 1.2rem;
+  font-size: 1.4rem;
+  color: #333;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.25s ease, max-height 0.25s ease;
+}
+
+.full-class-card:hover > p {
+  opacity: 1;
+  max-height: 6rem;
+}
+
+.full-class-card:hover .full-course-title {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: unset;
+}
+
+.cart-selected {
+  border: 2px solid #5f7fff;
+}
+
+.small-info-card {
+  background: #ffffff;
+  border: 1px solid #cdd7f1;
+  border-radius: 10px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+  padding: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: box-shadow 0.25s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+
+.small-info-card:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.small-info-card > p {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #333;
+  text-align: center;
+  white-space: nowrap;
+  margin: 0 1.2rem;
+}
+
+.draggable {
+  position: absolute;
+  user-select: none;
+  cursor: grab;
+}
+
+.draggable:active {
+  cursor: grabbing;
+}
+
+.dragable-wrapper {
+  position: relative;
+}
+
+#search-view {
+  width: 100%;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+#search-controls {
+  gap: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+#search-bar-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding: 0 2rem;
+}
+
+#search-input {
+  padding: 1rem;
+  width: 40%;
+  font-size: 2rem;
+  border: 1px solid #cdd7f1;
+  border-radius: 8px;
+  background: #f0f2f5;
+  outline: none;
+}
+
+#search-btn {
+  padding: 1rem 2rem;
+  background: #5f7fff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 2rem;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+#search-filters {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.filter label {
+  color: #5f7fff;
+  font-size: 2rem;
+}
+
+.filter select {
+  padding: 1rem;
+  border: 1px solid #cdd7f1;
+  border-radius: 8px;
+  background: #f0f2f5;
+  font-size: 1.6rem;
+  font-family: "Poppins", sans-serif;
+}
+
+#search-results, #selected-class-view {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 3rem;
+}
+
+#selected-class-view {
+  width: 80%;
+  align-items: center;
+}
+
+#adding-to-cart div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+#adding-to-cart input {
+  width: 20px;
+  height: 20px;
+}
+
+#adding-to-cart h3 {
+  padding-top: 0.5rem;
+}
+
+#adding-to-cart {
+  display: flex;
+  justify-content: flex-start;
+  gap: 2rem;
+  width: 100%;
+}
+
+#cart-view > div {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+#cart-view {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  height: fit-content;
+  padding: 0 0 2rem 0;
+}
+
+#cart-view button {
+  width: 50%;
+}
+
+.cart-columns {
+  display: flex;
+  justify-content: space-evenly;
+  width: 90%;
+  gap: 2rem;
+  flex-wrap: nowrap;
+  padding: 0 1rem;
+}
+
+.cart-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.cart-list li {
+  padding: 0.25rem 0;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.cart-list button {
+  max-width: min-content;
+}
+
+.cart-list li:last-child {
+  border-bottom: none;
+}
+
+#cart-status {
+  font-weight: 600;
+}
+
+/*
+.cart-remove-btn {
+  padding: 0.4rem 1rem;
+  font-size: 1.2rem;
+  margin-left: 1rem;
+}
+
+  */
+#message-view {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+#message-view > div {
+  width: 100%;
+  display: flex;
+  align-items: space-between;
+  gap: 2rem;
+}
+
+#message-content {
+  width: 100%;
+  margin: 0 2rem 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+#message-view .card-container {
+  margin: 0 0 2rem 2rem;
+}
+
+#finalize-swap-btn {
+  width: 20%;
+}
+
+.error-box {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  background-color: #ffffff;
+  color: #333;
+  border: 2px solid #d32f2f;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  font-weight: bold;
+  text-align: center;
+  z-index: 9999;
+  box-shadow: 0 4px 10px #d32f2f;
+  transform: translate(-50%, -50%);
+}
+
+.sucess-box {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  background-color: #ffffff;
+  color: #333;
+  border: 2px solid #5f7fff;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  font-weight: bold;
+  text-align: center;
+  z-index: 9999;
+  box-shadow: 0 4px 10px #5f7fff;
+  transform: translate(-50%, -50%);
+}
+
+.hidden {
+  display: none !important;
+}
