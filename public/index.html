@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<!--
+  Name: Alex K & Saleh K.
+  Date: Thursday, December 11, 2025
+  Section: CSE 154
+
+  Description: Landing page for the U-SWAP experience including login,
+  profile tools, search, cart, and messaging entry points.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>U-SWAP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="index.js"></script>
+</head>
+  <body>
+
+    <header>
+      <h1>Welcome to U-SWAP</h1>
+      <nav class="hidden">
+        <div id="nav-left">
+          <p>Hello, User!</p>
+        </div>
+
+        <div id="nav-right">
+          <img src="icons/search.svg" class="nav-icon" id="icon-search" alt="Search">
+          <img src="icons/cart.svg" class="nav-icon" id="icon-cart" alt="Cart">
+          <img src="icons/message.svg" class="nav-icon" id="icon-messages" alt="Messages">
+          <img src="icons/user.svg" class="nav-icon" id="icon-profile" alt="Profile">
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section id="login-or-signup">
+        <form id="login">
+          <h2>Login</h2>
+          <div>
+            <label for="username">Username:</label>
+            <input
+              type="text"
+              id="username"
+              placeholder="Username"
+              minlength="6"
+              maxlength="20"
+              required
+            >
+          </div>
+          <div>
+            <label for="password">Password:</label>
+            <input
+              type="password"
+              id="password"
+              placeholder="Password"
+              minlength="8"
+              maxlength="30"
+              required
+            >
+          </div>
+          <div>
+            <label for="stay-logged-in">
+              Stay Logged In
+              <input type="checkbox" id="stay-logged-in" name="log-in-check">
+            </label>
+          </div>
+          <button id="login-button">Log In</button>
+        </form>
+        <form class="hidden" id="signup">
+          <h2>Signup</h2>
+          <div>
+            <label for="signup-username">Username:</label>
+            <input
+              type="text"
+              id="signup-username"
+              placeholder="Username"
+              minlength="6"
+              maxlength="20"
+              required
+            >
+          </div>
+          <div>
+            <label for="signup-email">Email:</label>
+            <input
+              type="email"
+              id="signup-email"
+              placeholder="Email"
+              minlength="3"
+              maxlength="30"
+              required
+            >
+          </div>
+          <div>
+            <label for="signup-password">Password:</label>
+            <input type="password"
+              id="signup-password"
+              placeholder="Password"
+              minlength="8"
+              maxlength="30"
+              required
+            >
+          </div>
+          <button id="submit">Submit</button>
+        </form>
+        <p id="login-toggle">
+          Don't have an account? <span class="link">Sign Up</span>
+        </p>
+        <p id="signup-toggle" class="hidden">
+          Already Have an Account? <span class="link">Log in</span>
+        </p>
+      </section>
+
+      <aside id="sidebar" class="hidden">
+        <h3>Your Classes</h3>
+        <div id="current-classes"></div>
+
+        <h3>Wanted</h3>
+        <div id="wanted-classes"></div>
+
+        <h3>Offering</h3>
+        <div id="offering-classes"></div>
+      </aside>
+
+      <section id="profile-view" class="dragable-wrapper hidden expanded">
+        <h2>Hello User</h2>
+        <label for="change-view-mode">
+          Compact View
+          <input type="checkbox" id="change-view-mode" name="mode-check">
+        </label>
+
+        <div id="profile-enrolled" class="card-container card-container-expanded">
+          <h3>Enrolled Classes</h3>
+        </div>
+
+        <div id="profile-wanted" class="card-container card-container-expanded">
+          <h3>Wanted Classes</h3>
+        </div>
+
+        <div id="profile-offering" class="card-container card-container-expanded">
+          <h3>Classes willing to swap</h3>
+        </div>
+
+        <div id="profile-class-history" class="card-container card-container-expanded">
+          <h3>Class History</h3>
+        </div>
+
+        <div id="profile-all-swaps" class="card-container card-container-expanded">
+          <h3>Swap History</h3>
+        </div>
+        <div id="transaction-history" class="card-container card-container-expanded">
+          <h3>Transaction History</h3>
+        </div>
+      </section>
+
+      <section id="search-view" class="hidden">
+        <h2>Search Classes</h2>
+
+        <div id="search-controls">
+
+          <div id="search-bar-wrapper">
+            <input type="text" id="search-input" placeholder="Search for a class…" maxlength="30">
+            <button id="search-btn">Search</button>
+          </div>
+
+          <div id="search-filters">
+
+            <div class="filter">
+              <label for="filter-level">Course Level</label>
+              <select id="filter-level">
+                <option value="all">All</option>
+                <option value="100">100-Level</option>
+                <option value="200">200-Level</option>
+                <option value="300">300-Level</option>
+                <option value="400">400-Level</option>
+                <option value="400">500-Level</option>
+              </select>
+            </div>
+
+            <div class="filter">
+              <label for="filter-prereq">Prerequisites</label>
+              <select id="filter-prereq">
+                <option value="all">Any</option>
+                <option value="none">No Prereqs</option>
+              </select>
+            </div>
+
+            <div class="filter">
+              <label for="filter-sort">Sort By</label>
+              <select id="filter-sort">
+                <option value="name">Name</option>
+                <option value="level">Level</option>
+              </select>
+            </div>
+
+          </div>
+        </div>
+
+        <div id="search-results"></div>
+
+        <div id="selected-class-view" class="hidden">
+          <div id="class-info-box"></div>
+          <div id="adding-to-cart">
+            <h3>Select Classification</h3>
+
+            <div>
+              <input type="checkbox" id="opt-current">
+              <label for="opt-current">Enroll In Class</label>
+            </div>
+
+            <div>
+              <input type="checkbox" id="opt-taken">
+              <label for="opt-taken">Taken Previously</label>
+            </div>
+
+            <div>
+              <input type="checkbox" id="opt-wanted">
+              <label for="opt-wanted">Want to Take</label>
+            </div>
+
+            <div>
+              <input type="checkbox" id="opt-swap">
+              <label for="opt-swap">Willing to Swap</label>
+            </div>
+
+            <button id="add-to-cart-button">Add to Cart</button>
+            <button id="go-back-button">Back</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="cart-view" class="hidden">
+
+        <h2>Your Cart</h2>
+        <div class="cart-columns">
+          <div class="cart-container">
+            <h3>Enroll Requests</h3>
+            <ul id="cart-enroll-list" class="cart-list"></ul>
+          </div>
+          <div class="cart-container">
+            <h3>History Updates</h3>
+            <ul id="cart-history-list" class="cart-list"></ul>
+          </div>
+          <div class="cart-container">
+            <h3>Wanted Classes Updates</h3>
+            <ul id="cart-want-list" class="cart-list"></ul>
+          </div>
+          <div class="cart-container">
+            <h3>Trading classes</h3>
+            <ul id="cart-giving-list" class="cart-list"></ul>
+          </div>
+        </div>
+
+        <button id="cart-confirm-btn">Confirm Selection</button>
+        <button id="cart-submit-btn">Checkout</button>
+        <p id="cart-status"></p>
+
+      </section>
+
+      <section id="message-view" class="hidden">
+        <h2>Messages</h2>
+
+        <div>
+
+          <!-- LEFT COLUMN: Message List -->
+          <div class="card-container">
+            <h3>All messages</h3>
+
+            <div class="small-info-card">
+              <p>CSE 154 ↔ CSE 373 Jan 30, 2025</p>
+            </div>
+          </div>
+
+          <div id="message-content">
+            <h3>Swap Details</h3>
+
+            <p>
+              This swap is currently pending. The partner has been notified.
+            </p>
+
+            <p>Partner Contact:</p>
+            <p>Email: example@uw.edu</p>
+
+            <button id="finalize-swap-btn">Finalize Swap</button>
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+  </body>
+</html>
