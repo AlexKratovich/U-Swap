@@ -1,0 +1,31 @@
+{
+  "name": "u-swap",
+  "version": "1.0.0",
+  "description": "A UW course-search and reciprocal course-swap prototype built with Node.js, Express, and SQLite.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AlexKratovich/U-Swap.git"
+  },
+  "author": "Alexey Kratovich",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "setup": "node scripts/init-db.js",
+    "start": "node app.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "multer": "^2.0.2",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.7"
+  },
+  "contributors": [
+    {
+      "name": "Saleh K. (skamel)"
+    }
+  ],
+  "engines": {
+    "node": ">=20"
+  }
+}

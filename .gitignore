@@ -1,0 +1,9 @@
+node_modules/
+test/.tmp-*/
+uw_courses.db
+uw_courses.db-*
+*.log
+.env
+.env.*
+.DS_Store
+Thumbs.db
